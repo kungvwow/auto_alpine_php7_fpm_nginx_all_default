@@ -1,10 +1,3 @@
-######################################################
-#
-#  autobuild alpine + php7-fpm + nginx
-#    with all default config
-#
-######################################################
-
 FROM alpine
 
 Maintainer Wanjo Chan ( http://github.com/wanjochan/ )
@@ -24,7 +17,7 @@ php7-mysqlnd \
 php7-pdo \
 php7-pdo_mysql \
 php7-session \
-php7-dom \
+#php7-dom \
 php7-xml
 
 RUN apk add php7-fpm
