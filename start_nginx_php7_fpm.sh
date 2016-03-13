@@ -9,8 +9,9 @@ echo $dt
 tag=cmptech/auto_alpine_php7_fpm_nginx_all_default
 
 #docker run --rm -ti \
-
 docker run -d \
+
+docker run --rm -ti \
 -p 80:80 \
 -v $dd/php.ini:/etc/php7/conf.d/50-setting.ini \
 -v $dd/php-fpm.conf:/etc/php7/php-fpm.conf \
