@@ -16,6 +16,7 @@ docker run --rm -ti \
 -v $dd/php.ini:/etc/php7/conf.d/50-setting.ini \
 -v $dd/php-fpm.conf:/etc/php7/php-fpm.conf \
 -v $dd/htdocs:/htdocs \
+-v $dd/var_nginxphpfpm/:/var/run/nginxphpfpm/ \
 -v $dd/nginx.conf:/etc/nginx/nginx.conf \
 -v $dd/my_init.sh:/my_init.sh \
 $tag sh /my_init.sh
