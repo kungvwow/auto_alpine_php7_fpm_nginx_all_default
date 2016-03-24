@@ -4,22 +4,22 @@ autobuild [ alpine + php7-fpm + nginx ] with default config.
 
 <pre>
 REPOSITORY                                       TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
-cmptech/auto_alpine_php7_fpm_nginx_all_default   latest              ba04b8c3ffb5        10 days ago         34.14 MB
+cmptech/auto_alpine_php7_fpm_nginx_all_default   latest              d5e2e1c1ae84        3 minutes ago       38.77 MB
 </pre>
 
 # TODO
 
 <pre>
-make a fun script to start m container to run fpm, n container to run nginx
+make a fun script to start m container to run fpm, n container to run nginx:
 
-  start_app.sh --nginx=2 --fpm=4 -v /htdocs/:/htdocs -v
+start_app.sh --nginx=2 --fpm=4 -v /htdocs/:/htdocs $tag
 
-nginx(1) => \
-          \
-           \
-nginx(...)  fpm (1..m)
+nginx(1)=>\
+            \
+             \
+  nginx(...)   fpm (1..m)
+             /
+            /
            /
-          /
-         /
-nginx(n) =>
+nginx(n)=>
 </pre>
