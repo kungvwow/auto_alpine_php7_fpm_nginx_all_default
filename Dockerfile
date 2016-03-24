@@ -17,12 +17,15 @@ php7-mysqlnd \
 php7-pdo \
 php7-pdo_mysql \
 php7-session \
-#php7-dom \
 php7-xml
+
+#php7-dom
 
 RUN apk add php7-fpm
 
 RUN apk add nginx
+
+RUN apk add wget curl bash openssl
 
 RUN rm -rf /var/cache/apk/*
 
