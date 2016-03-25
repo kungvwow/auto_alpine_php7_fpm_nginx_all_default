@@ -2,9 +2,12 @@
 
 autobuild [ alpine + php7-fpm + nginx ] with default config.
 
+Notes: Size is not our only purpose, practical is.
+
 <pre>
+docker images
 REPOSITORY                                       TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
-cmptech/auto_alpine_php7_fpm_nginx_all_default   latest              d5e2e1c1ae84        3 minutes ago       38.77 MB
+cmptech/auto_alpine_php7_fpm_nginx_all_default   latest              95c19def039e        5 seconds ago       46.12 MB
 </pre>
 
 # Benchmark

@@ -27,6 +27,10 @@ RUN apk add nginx
 
 RUN apk add wget curl bash openssl
 
-RUN rm -rf /var/cache/apk/*
+#you will need cli sooner or later
+RUN apk add php7
+
+#Save Space but will fail the 'apk search'...
+#RUN rm -rf /var/cache/apk/*
 
 

@@ -8,6 +8,8 @@ echo $dt
 
 tag=cmptech/auto_alpine_php7_fpm_nginx_all_default
 
+#TODO build 
+
 #docker run --rm -ti \
 #docker run -d \
 #-v $dd/var_nginxphpfpm/:/var/run/nginxphpfpm/ \
