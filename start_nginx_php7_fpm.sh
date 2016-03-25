@@ -19,14 +19,14 @@ fi
 echo $htdocs
 
 i=1
-amax=3
+amax=2
 
 while [ $i -le $amax ]
 do
 nginxport=`expr $i + 8800`
 fpmport=`expr $i + 9000`
 	docker run -d \
-	-p 127.0.0.1:$nginxport:80 \
+	-p 0.0.0.0:$nginxport:80 \
 	-p 127.0.0.1:$fpmport:9000 \
 	-v $dd/php-fpm.conf:/etc/php7/php-fpm.conf \
 	-v $dd/php.ini:/etc/php7/php.ini \
@@ -38,6 +38,8 @@ fpmport=`expr $i + 9000`
 	sleep 1
 	i=`expr $i + 1`
 done
+
+docker ps
 exit
 
 #nginx (local not docker) balancing reference:
