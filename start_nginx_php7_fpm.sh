@@ -8,22 +8,16 @@ echo $dt
 
 tag=cmptech/auto_alpine_php7_fpm_nginx_all_default
 
-#TODO build 
+htdocs=$dd/htdocs
 
-#docker run --rm -ti \
-#docker run -d \
-#-v $dd/var_nginxphpfpm/:/var/run/nginxphpfpm/ \
-
-#-v $dd/php.ini:/etc/php7/conf.d/50-setting.ini \
-
-#sorry, very busy, optimize later :P
+#TODO getopts for how many container to start
 
 docker run -d \
--p 8801:80 \
+-p 127.0.0.1:8801:80 \
 -p 127.0.0.1:9901:9000 \
 -v $dd/php-fpm.conf:/etc/php7/php-fpm.conf \
 -v $dd/php.ini:/etc/php7/php.ini \
--v $dd/htdocs:/htdocs \
+-v $htdocs:/htdocs \
 -v /var/run/dockernginxphpfpm/$dt/:/var/run/nginxphpfpm/ \
 -v $dd/nginx.conf:/etc/nginx/nginx.conf \
 -v $dd/my_init.sh:/my_init.sh \
@@ -31,11 +25,11 @@ $tag sh /my_init.sh
 
 sleep 1
 docker run -d \
--p 8802:80 \
+-p 127.0.0.1:8802:80 \
 -p 127.0.0.1:9902:9000 \
 -v $dd/php-fpm.conf:/etc/php7/php-fpm.conf \
 -v $dd/php.ini:/etc/php7/php.ini \
--v $dd/htdocs:/htdocs \
+-v $htdocs:/htdocs \
 -v /var/run/dockernginxphpfpm/$dt/:/var/run/nginxphpfpm/ \
 -v $dd/nginx.conf:/etc/nginx/nginx.conf \
 -v $dd/my_init.sh:/my_init.sh \
@@ -43,16 +37,17 @@ $tag sh /my_init.sh
 
 sleep 1
 docker run -d \
--p 8803:80 \
+-p 127.0.0.1:8803:80 \
 -p 127.0.0.1:9903:9000 \
 -v $dd/php-fpm.conf:/etc/php7/php-fpm.conf \
 -v $dd/php.ini:/etc/php7/php.ini \
--v $dd/htdocs:/htdocs \
+-v $htdocs:/htdocs \
 -v /var/run/dockernginxphpfpm/$dt/:/var/run/nginxphpfpm/ \
 -v $dd/nginx.conf:/etc/nginx/nginx.conf \
 -v $dd/my_init.sh:/my_init.sh \
 $tag sh /my_init.sh
 
+sleep 1
 docker ps
 
 exit

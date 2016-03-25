@@ -63,3 +63,8 @@ nginx(1)=>\
            /
 nginx(n)=>
 </pre>
+
+# MISC
+
+Inside the GFW, for better docker pull, using:
+export MACHINE_DOCKER_INSTALL_URL=http://docker-mirror.oss-cn-hangzhou.aliyuncs.com/
