@@ -17,6 +17,7 @@ php7-mysqlnd \
 php7-pdo \
 php7-pdo_mysql \
 php7-session \
+php7-zlib \
 php7-dom \
 php7-xml \
 php7-fpm \
