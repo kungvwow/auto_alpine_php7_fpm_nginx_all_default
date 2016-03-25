@@ -8,48 +8,36 @@ echo $dt
 
 tag=cmptech/auto_alpine_php7_fpm_nginx_all_default
 
-htdocs=$dd/htdocs
-
 #TODO getopts for how many container to start
+#assume the first param is htdocs...
+if [ x$1 != x ]
+then
+htdocs=$1
+else
+htdocs=$dd/htdocs
+fi
+echo $htdocs
 
-docker run -d \
--p 127.0.0.1:8801:80 \
--p 127.0.0.1:9901:9000 \
--v $dd/php-fpm.conf:/etc/php7/php-fpm.conf \
--v $dd/php.ini:/etc/php7/php.ini \
--v $htdocs:/htdocs \
--v /var/run/dockernginxphpfpm/$dt/:/var/run/nginxphpfpm/ \
--v $dd/nginx.conf:/etc/nginx/nginx.conf \
--v $dd/my_init.sh:/my_init.sh \
-$tag sh /my_init.sh
+i=1
+amax=3
 
-sleep 1
-docker run -d \
--p 127.0.0.1:8802:80 \
--p 127.0.0.1:9902:9000 \
--v $dd/php-fpm.conf:/etc/php7/php-fpm.conf \
--v $dd/php.ini:/etc/php7/php.ini \
--v $htdocs:/htdocs \
--v /var/run/dockernginxphpfpm/$dt/:/var/run/nginxphpfpm/ \
--v $dd/nginx.conf:/etc/nginx/nginx.conf \
--v $dd/my_init.sh:/my_init.sh \
-$tag sh /my_init.sh
-
-sleep 1
-docker run -d \
--p 127.0.0.1:8803:80 \
--p 127.0.0.1:9903:9000 \
--v $dd/php-fpm.conf:/etc/php7/php-fpm.conf \
--v $dd/php.ini:/etc/php7/php.ini \
--v $htdocs:/htdocs \
--v /var/run/dockernginxphpfpm/$dt/:/var/run/nginxphpfpm/ \
--v $dd/nginx.conf:/etc/nginx/nginx.conf \
--v $dd/my_init.sh:/my_init.sh \
-$tag sh /my_init.sh
-
-sleep 1
-docker ps
-
+while [ $i -le $amax ]
+do
+nginxport=`expr $i + 8800`
+fpmport=`expr $i + 9000`
+	docker run -d \
+	-p 127.0.0.1:$nginxport:80 \
+	-p 127.0.0.1:$fpmport:9000 \
+	-v $dd/php-fpm.conf:/etc/php7/php-fpm.conf \
+	-v $dd/php.ini:/etc/php7/php.ini \
+	-v $htdocs:/htdocs \
+	-v /var/run/dockernginxphpfpm/$dt-$i/:/var/run/nginxphpfpm/ \
+	-v $dd/nginx.conf:/etc/nginx/nginx.conf \
+	-v $dd/my_init.sh:/my_init.sh \
+	$tag sh /my_init.sh $i
+	sleep 1
+	i=`expr $i + 1`
+done
 exit
 
 #nginx (local not docker) balancing reference:
