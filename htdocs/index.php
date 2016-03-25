@@ -1,7 +1,5 @@
 <?php
-#phpinfo();
+print "<pre>";
 print rand();
-#print "<pre>";
-#var_dump($_SERVER);
-
-#TODO get the current server port ...
+print "\n";
+print file_get_contents("/var/run/nginxphpfpm/order.txt");
