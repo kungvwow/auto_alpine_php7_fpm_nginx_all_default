@@ -2,7 +2,9 @@ FROM alpine
 
 Maintainer Wanjo Chan ( http://github.com/wanjochan/ )
 
-COPY repositories /etc/apk/
+#COPY repositories /etc/apk/
+RUN echo "http://nl.alpinelinux.org/alpine/latest-stable/main/" > /etc/apk/repositories
+RUN echo "http://nl.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositories
 
 RUN apk update && apk upgrade
 
