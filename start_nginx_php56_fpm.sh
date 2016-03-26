@@ -6,7 +6,7 @@ echo $dd
 dt=`date +%Y%m%d%H%M%S`
 echo $dt
 
-tag=cmptech/auto_alpine_php7_fpm_nginx_all_default
+tag=cmptech/auto_iron_php56_fpm_nginx_all_default
 
 #TODO getopts for how many container to start
 #assume the first param is htdocs...
