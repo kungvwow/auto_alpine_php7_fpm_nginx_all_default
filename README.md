@@ -4,15 +4,9 @@ autobuild [ alpine + php7-fpm + nginx ] with default config.
 
 Notes: Size is not our only purpose, practical is.
 
-<pre>
-docker images
-REPOSITORY                                       TAG                 IMAGE ID            CREATED             VIRTUAL SIZE
-cmptech/auto_alpine_php7_fpm_nginx_all_default   latest              95c19def039e        5 seconds ago       46.12 MB
-</pre>
-
 # Benchmark
 Notes: something is wrong, the RPS is too low
-<pre>
+```
 siege -c 16 -b -t 10S http://127.0.0.1:8800/index.php
 ** SIEGE 3.0.5
 ** Preparing 16 concurrent users for battle.
@@ -31,9 +25,10 @@ Successful transactions:       15123
 Failed transactions:               0
 Longest transaction:            0.06
 Shortest transaction:           0.00
-</pre>
+```
+
 Below is single nginx (not docker) with php5-fpm(not docker)
-<pre>
+```
 Transactions:                 117587 hits
 Availability:                 100.00 %
 Elapsed time:                  19.71 secs
@@ -46,10 +41,10 @@ Successful transactions:      117587
 Failed transactions:               0
 Longest transaction:            0.09
 Shortest transaction:           0.00
-</pre>
+```
 # TODO
 
-<pre>
+```
 make a fun script to start m container to run fpm, n container to run nginx:
 
 start_app.sh --nginx=2 --fpm=4 -v /htdocs/:/htdocs $tag
@@ -62,7 +57,7 @@ nginx(1)=>\
             /
            /
 nginx(n)=>
-</pre>
+```
 
 # MISC
 
