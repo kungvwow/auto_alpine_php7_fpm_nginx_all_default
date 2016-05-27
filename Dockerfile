@@ -30,7 +30,7 @@ php7
 
 RUN apk --update add libwebp libwebp-dev
 
-RUN apk add php7-gd
+#RUN apk add php7-gd
 
 RUN apk add nginx
 
