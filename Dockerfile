@@ -8,10 +8,11 @@ RUN echo "http://nl.alpinelinux.org/alpine/edge/testing/" >> /etc/apk/repositori
 
 RUN apk update && apk upgrade
 
-RUN apk --update add \
+#RUN apk --update add 
+
+RUN apk add \
 php7-curl \
 php7-gmp \
-php7-gd \
 php7-json \
 php7-mbstring \
 php7-opcache \
@@ -24,6 +25,8 @@ php7-dom \
 php7-xml \
 php7-fpm \
 php7
+
+RUN apk add libwebp php7-gd
 
 RUN apk add nginx
 
