@@ -26,17 +26,9 @@ php7-xml \
 php7-fpm \
 php7
 
-<<<<<<< HEAD
-#RUN apk add libwebp libwebp-tools
-
-RUN apk --update add libwebp libwebp-dev
+RUN apk add libwebp libwebp-tools
 
 #RUN apk add php7-gd
-=======
-RUN apk add libwebp
-
-RUN apk add php7-gd
->>>>>>> af3877f3b7363a3395bb9b02ebe6253ef8a83a87
 
 RUN apk add nginx
 
