@@ -4,6 +4,21 @@ autobuild [ alpine + php7-fpm + nginx ] with default config.
 
 Notes: Size is not our only purpose, practical is.
 
+# Usage
+
+* pull & run
+```
+# pull the latest build from hub.docker:
+docker pull cmptech/auto_alpine_php7_fpm_nginx_all_default
+# run in tty to check php version:
+docker run -t cmptech/auto_alpine_php7_fpm_nginx_all_default php7 -v
+```
+
+or you can 
+
+* git clone && docker build && docker run
+
+
 # Benchmark
 Notes: something is wrong, the RPS is too low
 ```
@@ -27,7 +42,7 @@ Longest transaction:            0.06
 Shortest transaction:           0.00
 ```
 
-Below is single nginx (not docker) with php5-fpm(not docker)
+Below is single nginx (non-docker) with php5-fpm(non-docker)
 ```
 Transactions:                 117587 hits
 Availability:                 100.00 %
